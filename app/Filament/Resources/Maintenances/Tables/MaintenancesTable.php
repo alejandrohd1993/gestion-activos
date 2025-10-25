@@ -62,6 +62,26 @@ class MaintenancesTable
 
                             return url("/admin/usages/create?$params");
                         }),
+
+                    Action::make('registrarGasto')
+                        ->label('Registrar Gastos')
+                        ->icon('heroicon-o-currency-dollar')
+                        ->action(function ($record) {
+
+                            $date = optional($record->date)->format('Y-m-d');
+                            
+
+                            $params = http_build_query([
+                                'expensable_type' => \App\Models\Maintenance::class,
+                                'expensable_id' => $record->id,
+                                'start_date' => $date,
+                                'scope' => 'specific',
+                                
+                            ]);
+
+                            return redirect()->to(url("/admin/expense-batches/create?$params"));
+                        }),
+
                     Action::make('marcarCompletado')
                         ->label('Completado')
                         ->icon('heroicon-o-check-badge')
