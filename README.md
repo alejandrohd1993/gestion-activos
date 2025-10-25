@@ -1,61 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🧰 Sistema de Gestión de Activos y Mantenimientos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+⚡ Persistencia Digital 
 
-## About Laravel
+Sistema web desarrollado por **Persistencia Digital** para la gestión integral de **generadores eléctricos, activos, mantenimientos, servicios, gastos y reportes**.  
+Permite controlar de manera precisa el estado operativo de los equipos, programar mantenimientos, registrar usos (horómetro) y administrar gastos asociados.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Aplicación web desarrollada en **Laravel + Filament PHP + MySQL** para la gestión integral de activos, generadores, mantenimientos, servicios, gastos y reportes.  
+Permite a las empresas controlar de manera eficiente el estado, uso y costos operativos de sus equipos.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Características principales
 
-## Learning Laravel
+- **Gestión de Activos**  
+  Control detallado de equipos, generadores y componentes asociados.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Módulo de Mantenimientos**  
+  Programación, ejecución y seguimiento de mantenimientos preventivos y correctivos.  
+  Compatible con alertas por horómetro y fechas de vencimiento.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Módulo de Servicios**  
+  Creación de servicios asociados a clientes y activos, con seguimiento del estado (`Pendiente`, `En progreso`, `Completado`).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Registro de Usos (Horómetros)**  
+  Control de horas de operación de generadores con validación de formato `HH:MM:SS`.
 
-## Laravel Sponsors
+- **Gestión de Gastos**  
+  Registro de gastos generales y específicos, asociados tanto a mantenimientos como a servicios.  
+  Permite relacionar gastos a un activo o generador específico.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Reportes y Estadísticas**  
+  Visualización de reportes por servicio, activo o periodo.  
+  Compatible con exportación de datos y gráficos en Filament.
 
-### Premium Partners
+- **Roles y Permisos (Filament Shield)**  
+  Control de acceso mediante roles:
+  - 🧑‍💼 **Administrador:** Acceso completo al sistema.  
+  - 🧰 **Operador:** Acceso a servicios, mantenimientos y reportes operativos.  
+  - 💰 **Contabilidad:** Acceso a módulos de gastos, facturación y reportes financieros.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **Notificaciones y Calendario**  
+  Alertas automáticas de mantenimientos programados y vencimientos.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🏗️ Tecnologías utilizadas
 
-## Code of Conduct
+| Componente | Tecnología |
+|-------------|-------------|
+| **Backend** | Laravel 11 |
+| **Panel administrativo** | Filament PHP v4 |
+| **Base de datos** | MySQL 8 |
+| **Frontend** | Tailwind CSS |
+| **Control de acceso** | Filament Shield |
+| **ORM** | Eloquent |
+| **Notificaciones** | Laravel Notifications |
+| **Autenticación** | Laravel Breeze / Filament Auth |
+| **Despliegue** | Docker / Laravel Forge *(opcional)* |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## ⚙️ Instalación y configuración
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 1️⃣ Clonar el repositorio
+```bash
+git clone https://github.com/alejandrohd1993/gestion-activos
+cd gestion-activos
