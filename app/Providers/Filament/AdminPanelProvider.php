@@ -37,6 +37,9 @@ class AdminPanelProvider extends PanelProvider
                 Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
+            ->favicon(asset('images/logo.png'))
+            ->brandLogo(asset('images/logo.png'))
+            ->brandLogoHeight('3rem')
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
