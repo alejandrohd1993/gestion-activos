@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\Settings\SettingResource;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -18,6 +20,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Navigation\UserMenuItem;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -40,6 +43,12 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(asset('images/logo.png'))
             ->brandLogo(asset('images/logo.png'))
             ->brandLogoHeight('3rem')
+            ->userMenuItems([
+                Action::make('settings')
+                    ->label('Configuración')
+                    ->url(fn () => \App\Filament\Resources\Settings\SettingResource::getUrl())
+                    ->icon('heroicon-o-cog-6-tooth'),
+            ])
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
