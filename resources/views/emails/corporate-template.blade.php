@@ -73,7 +73,7 @@
                         <td align="center" style="padding: 25px 0; font-size: 12px; color: #999999;">
                             <p>&copy; {{ date('Y') }} {{ $companyName ?? config('app.name') }}. Todos los derechos reservados.</p>
                             @if(isset($developer))
-                                <p>Desarrollado por {{ $developer }}.</p>
+                                <p>Powered by {{ $developer }}.</p>
                             @endif
                         </td>
                     </tr>
