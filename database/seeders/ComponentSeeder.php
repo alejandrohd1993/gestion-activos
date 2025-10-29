@@ -17,14 +17,14 @@ class ComponentSeeder extends Seeder
             'name' => 'Aceite',
             'category' => 'generador',
             'unit_id' => 1, 
-            'duration' => 200,
+            'duration' => 720000,
         ]);
 
         Component::create([
             'name' => 'Filtro ACPM',
             'category' => 'generador',
             'unit_id' => 1, 
-            'duration' => 200,
+            'duration' => 720000,
         ]);
 
         Component::create([

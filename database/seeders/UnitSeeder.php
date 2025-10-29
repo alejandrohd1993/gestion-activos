@@ -28,14 +28,5 @@ class UnitSeeder extends Seeder
             'type' => 'calendario',
         ]);
 
-        Unit::create([
-            'name' => 'meses',
-            'type' => 'calendario',         
-        ]);
-
-        Unit::create([
-            'name' => 'años',
-            'type' => 'calendario',         
-        ]);
     }
 }

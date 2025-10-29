@@ -18,9 +18,9 @@ class ComponentResource extends Resource
 {
     protected static ?string $model = Component::class;
 
-    protected static ?string $modelLabel = 'Insumo';
-    
-    protected static ?string $pluralModelLabel = 'Insumos';
+    protected static ?string $modelLabel = 'Componente';
+
+    protected static ?string $pluralModelLabel = 'Componentes';
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cpu-chip';
 

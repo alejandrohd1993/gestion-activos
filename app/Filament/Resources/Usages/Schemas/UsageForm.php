@@ -224,7 +224,6 @@ class UsageForm
                                     ->options(Expense::where('is_active', true)->pluck('name', 'id'))
                                     ->searchable()
                                     ->preload()
-                                    ->required()
                                     ->distinct()
                                     ->disableOptionsWhenSelectedInSiblingRepeaterItems(),
                                 TextInput::make('amount')
@@ -232,8 +231,7 @@ class UsageForm
                                     ->numeric()
                                     ->mask(RawJs::make('$money($input)'))
                                     ->stripCharacters(',')
-                                    ->prefix('$')
-                                    ->required(),
+                                    ->prefix('$'),
                                 Textarea::make('description')
                                     ->label('Descripción del Gasto')->columnSpanFull(),
                             ])

@@ -30,6 +30,20 @@ class ComponentsTable
                 TextColumn::make('duration')
                     ->label('Vida Útil')
                     ->numeric()
+                    ->formatStateUsing(function ($state, $record) {
+                        // Si no hay unidad asociada, se devuelve el valor tal cual
+                        if (! $record->unit) {
+                            return $state;
+                        }
+
+                        // Si la unidad es "horas", convertir segundos a horas
+                        if (strtolower($record->unit->name) === 'horas') {
+                            return $state / 3600;
+                        }
+
+                        // De lo contrario, mostrar con la unidad original
+                        return "{$state}";
+                    })
                     ->sortable(),
                 TextColumn::make('unit.name')
                     ->label('Unidad')

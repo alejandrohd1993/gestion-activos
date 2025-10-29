@@ -31,10 +31,26 @@ class ComponentForm
                     ->required(),
                 TextInput::make('duration')
                     ->label('Duración / Vida Útil')
-                    ->required()
                     ->numeric()
-                    // Sufijo dinámico que muestra la unidad seleccionada
-                    ->suffix(fn (Get $get): ?string => $get('unit_id') ? Unit::find($get('unit_id'))->name : null),
+                    ->required()
+                    // 👇 Mostrar en horas si la unidad es "horas"
+                    ->formatStateUsing(function ($state, Get $get) {
+                        $unit = Unit::find($get('unit_id'));
+                        if ($state && $unit && strtolower($unit->name) === 'horas') {
+                            return $state / 3600;
+                        }
+                        return $state;
+                    })
+                    // 👇 Convertir a segundos al guardar si la unidad es "horas"
+                    ->dehydrateStateUsing(function ($state, Get $get) {
+                        $unit = Unit::find($get('unit_id'));
+                        if ($state && $unit && strtolower($unit->name) === 'horas') {
+                            return $state * 3600;
+                        }
+                        return $state;
+                    })
+                    // 👇 Mostrar el sufijo dinámico
+                    ->suffix(fn(Get $get): ?string => $get('unit_id') ? Unit::find($get('unit_id'))->name : null),
             ]);
     }
 }
