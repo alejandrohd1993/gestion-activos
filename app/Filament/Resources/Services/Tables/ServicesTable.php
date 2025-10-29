@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\Services\Tables;
 
+use App\Mail\ServiceCompletedForBilling;
+use App\Models\Setting;
+use Illuminate\Support\Facades\Mail;
 use App\Enums\ServiceStatus;
 use App\Filament\Resources\Usages\Schemas\UsageForm;
 use Filament\Actions\Action;
@@ -16,6 +19,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class ServicesTable
 {
@@ -113,14 +117,24 @@ class ServicesTable
                         ->label('Completado')
                         ->icon('heroicon-o-check-badge')
                         ->color('white')
-                        ->visible(fn($record) => $record->status === ServiceStatus::PENDIENTE)
+                        ->visible(fn($record) => $record->status !== ServiceStatus::COMPLETADO)
                         ->action(function ($record) {
                             $record->update(['status' => ServiceStatus::COMPLETADO->value]);
-
+ 
                             Notification::make()
                                 ->title('Servicio marcado como completado')
                                 ->success()
                                 ->send();
+
+                            // Enviar correo a contabilidad
+                            $accountingEmail = Setting::where('key', 'correo_contabilidad')->value('value');
+
+                            if ($accountingEmail) {
+                                Mail::to($accountingEmail)->send(new ServiceCompletedForBilling($record));
+                            } else {
+                                // Opcional: Notificar al admin si el correo no está configurado
+                                Notification::make()->title('Correo de contabilidad no configurado')->warning()->sendToDatabase(Auth::user());
+                            }
                         }),
 
                     EditAction::make(),
