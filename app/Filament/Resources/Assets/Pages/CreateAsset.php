@@ -54,7 +54,7 @@ class CreateAsset extends CreateRecord
                 'maintainable_id' => $asset->id,
                 'date' => $date,
                 'type' => MaintenanceType::PREVENTIVO,
-                'status' => MaintenanceStatus::PENDIENTE,
+                'status' => MaintenanceStatus::COMPLETADO,
                 'user_id' => 1, // O un usuario por defecto
             ]);
 
