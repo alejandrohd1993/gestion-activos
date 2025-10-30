@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\MaintenanceStatus;
 use App\Enums\UnitType;
 use App\Models\Asset;
 use App\Models\Component;
@@ -124,7 +125,7 @@ class MaintenanceStatusService
         $usageRemaining = $nextMaintenanceMeter - $currentMeter;
 
         $status = 'ok';
-        $warningThreshold = $duration * 0.10; // Umbral de advertencia: 10% de la duración.
+        $warningThreshold = $duration * 0.20; // Umbral de advertencia: 20% de la duración.
         if ($usageRemaining <= 0) {
             $status = 'expired';
         } elseif ($usageRemaining <= $warningThreshold) {
@@ -204,10 +205,12 @@ class MaintenanceStatusService
     {
         // Buscamos en la tabla de mantenimientos.
         // Filtramos por el equipo polimórfico (sea Asset o Generator).
+        // Filtramos para considerar únicamente los mantenimientos marcados como 'COMPLETADO'.
         // Usamos whereHas para asegurarnos que el mantenimiento incluye el componente específico.
         // Ordenamos por la fecha más reciente y tomamos el primero.
         return Maintenance::where('maintainable_type', $equipment->getMorphClass())
             ->where('maintainable_id', $equipment->getKey())
+            ->where('status', MaintenanceStatus::COMPLETADO)
             ->whereHas('components', function ($query) use ($component) {
                 $query->where('components.id', $component->id);
             })

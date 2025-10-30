@@ -213,7 +213,6 @@ class UsageForm
                 Section::make('Registrar Gastos Asociados')
                     ->description('Añada los gastos específicos incurridos durante este uso del equipo.')
                     ->collapsible()
-                    ->collapsed()
                     ->schema([
                         Repeater::make('expense_items')
                             ->label('Gastos')
@@ -224,11 +223,13 @@ class UsageForm
                                     ->options(Expense::where('is_active', true)->pluck('name', 'id'))
                                     ->searchable()
                                     ->preload()
+                                    ->required()
                                     ->distinct()
                                     ->disableOptionsWhenSelectedInSiblingRepeaterItems(),
                                 TextInput::make('amount')
                                     ->label('Monto')
                                     ->numeric()
+                                    ->required()
                                     ->mask(RawJs::make('$money($input)'))
                                     ->stripCharacters(',')
                                     ->prefix('$'),
