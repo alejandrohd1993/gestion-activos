@@ -26,6 +26,8 @@ class ComponentResource extends Resource
 
     protected static ?int $navigationSort = 3;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Equipos';
+
     public static function form(Schema $schema): Schema
     {
         return ComponentForm::configure($schema);

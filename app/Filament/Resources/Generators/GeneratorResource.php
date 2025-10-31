@@ -26,6 +26,8 @@ class GeneratorResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Equipos';
+
     public static function form(Schema $schema): Schema
     {
         return GeneratorForm::configure($schema);

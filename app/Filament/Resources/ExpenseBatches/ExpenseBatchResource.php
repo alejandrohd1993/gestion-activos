@@ -24,6 +24,10 @@ class ExpenseBatchResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-currency-dollar';
 
+    protected static ?int $navigationSort = 7;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Gastos';
+
     public static function form(Schema $schema): Schema
     {
         return ExpenseBatchForm::configure($schema);

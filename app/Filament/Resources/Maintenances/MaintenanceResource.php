@@ -26,6 +26,8 @@ class MaintenanceResource extends Resource
 
     protected static ?int $navigationSort = 6;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Operación';
+
     public static function form(Schema $schema): Schema
     {
         return MaintenanceForm::configure($schema);

@@ -26,6 +26,8 @@ class UnitResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Equipos';
+
     public static function form(Schema $schema): Schema
     {
         return UnitForm::configure($schema);

@@ -26,6 +26,8 @@ class UsageResource extends Resource
 
     protected static ?int $navigationSort = 7;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Operación';
+
     public static function form(Schema $schema): Schema
     {
         return UsageForm::configure($schema);

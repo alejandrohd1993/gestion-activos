@@ -24,7 +24,9 @@ class ExpenseResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-currency-dollar';
 
-    protected static ?int $navigationSort = 11;
+    protected static ?int $navigationSort = 8;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Gastos';
 
     public static function form(Schema $schema): Schema
     {

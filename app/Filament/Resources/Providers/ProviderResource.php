@@ -26,7 +26,9 @@ class ProviderResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-shopping-cart';
 
-    protected static ?int $navigationSort = 9;
+    protected static ?int $navigationSort = 10;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Terceros';
 
     public static function form(Schema $schema): Schema
     {

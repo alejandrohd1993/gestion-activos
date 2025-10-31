@@ -28,6 +28,8 @@ class SettingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cog-6-tooth';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Schema $schema): Schema
     {
         return SettingForm::configure($schema);

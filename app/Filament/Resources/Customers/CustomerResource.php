@@ -24,7 +24,9 @@ class CustomerResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-building-storefront';
 
-    protected static ?int $navigationSort = 8;
+    protected static ?int $navigationSort = 9;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Terceros';
 
     public static function form(Schema $schema): Schema
     {
